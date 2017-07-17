@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.TV5QuebecCanada"
        name="TV5 Québec Canada"
-       version="1.0.4"
-       provider-name="SlySen, CB"
+       version="1.0.5"
+       provider-name="CB, SlySen"
 >
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -18,6 +18,6 @@
         <summary>Plugin for the TV5.ca site</summary>
 	    <summary lang="fr">Addiciel vidéo donnant accès aux vidéos du site TV5.ca</summary>
         <description>Play videos from TV5.ca site.</description>
-	    <description lang="fr">Cet addiciel permet d'accèder au contenu vidéo de TV5.ca.</description>
+	    <description lang="fr">Cet addiciel permet d'accéder au contenu vidéo de TV5.ca.</description>
     </extension>
 </addon>
