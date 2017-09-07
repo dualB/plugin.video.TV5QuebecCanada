@@ -58,33 +58,33 @@ def get_cached_content(path):
         return None
     return content
 
-# Merci ‡ l'auteur de cette fonction
+# Merci √† l'auteur de cette fonction
 def unescape_callback(matches):
     """ function docstring """
     html_entities =\
     {
         'quot':'\"', 'amp':'&', 'apos':'\'', 'lt':'<',
-        'gt':'>', 'nbsp':' ', 'copy':'©', 'reg':'Æ',
-        'Agrave':'¿', 'Aacute':'¡', 'Acirc':'¬',
-        'Atilde':'√', 'Auml':'ƒ', 'Aring':'≈',
-        'AElig':'∆', 'Ccedil':'«', 'Egrave':'»',
-        'Eacute':'…', 'Ecirc':' ', 'Euml':'À',
-        'Igrave':'Ã', 'Iacute':'Õ', 'Icirc':'Œ',
-        'Iuml':'œ', 'ETH':'–', 'Ntilde':'—',
-        'Ograve':'“', 'Oacute':'”', 'Ocirc':'‘',
-        'Otilde':'’', 'Ouml':'÷', 'Oslash':'ÿ',
-        'Ugrave':'Ÿ', 'Uacute':'⁄', 'Ucirc':'€',
-        'Uuml':'‹', 'Yacute':'›', 'agrave':'‡',
-        'aacute':'·', 'acirc':'‚', 'atilde':'„',
-        'auml':'‰', 'aring':'Â', 'aelig':'Ê',
-        'ccedil':'Á', 'egrave':'Ë', 'eacute':'È',
-        'ecirc':'Í', 'euml':'Î', 'igrave':'Ï',
-        'iacute':'Ì', 'icirc':'Ó', 'iuml':'Ô',
-        'eth':'', 'ntilde':'Ò', 'ograve':'Ú',
-        'oacute':'Û', 'ocirc':'Ù', 'otilde':'ı',
-        'ouml':'ˆ', 'oslash':'¯', 'ugrave':'˘',
-        'uacute':'˙', 'ucirc':'˚', 'uuml':'¸',
-        'yacute':'˝', 'yuml':'ˇ'
+        'gt':'>', 'nbsp':' ', 'copy':'¬©', 'reg':'¬Æ',
+        'Agrave':'√Ä', 'Aacute':'√Å', 'Acirc':'√Ç',
+        'Atilde':'√É', 'Auml':'√Ñ', 'Aring':'√Ö',
+        'AElig':'√Ü', 'Ccedil':'√á', 'Egrave':'√à',
+        'Eacute':'√â', 'Ecirc':'√ä', 'Euml':'√ã',
+        'Igrave':'√å', 'Iacute':'√ç', 'Icirc':'√é',
+        'Iuml':'√è', 'ETH':'√ê', 'Ntilde':'√ë',
+        'Ograve':'√í', 'Oacute':'√ì', 'Ocirc':'√î',
+        'Otilde':'√ï', 'Ouml':'√ñ', 'Oslash':'√ò',
+        'Ugrave':'√ô', 'Uacute':'√ö', 'Ucirc':'√õ',
+        'Uuml':'√ú', 'Yacute':'√ù', 'agrave':'√†',
+        'aacute':'√°', 'acirc':'√¢', 'atilde':'√£',
+        'auml':'√§', 'aring':'√•', 'aelig':'√¶',
+        'ccedil':'√ß', 'egrave':'√®', 'eacute':'√©',
+        'ecirc':'√™', 'euml':'√´', 'igrave':'√¨',
+        'iacute':'√≠', 'icirc':'√Æ', 'iuml':'√Ø',
+        'eth':'√∞', 'ntilde':'√±', 'ograve':'√≤',
+        'oacute':'√≥', 'ocirc':'√¥', 'otilde':'√µ',
+        'ouml':'√∂', 'oslash':'√∏', 'ugrave':'√π',
+        'uacute':'√∫', 'ucirc':'√ª', 'uuml':'√º',
+        'yacute':'√Ω', 'yuml':'√ø'
     }
 
     entity = matches.group(0)
@@ -160,7 +160,7 @@ def creer_menu_accueil():
             TV5CA_BASE_URL+'/videos?options[sort]=publish_start&options[order]=DESC&options[page]=1',\
             6, ADDON_IMAGES_BASEPATH+'default-folder.png', True\
     )
-    add_dir('[COLOR steelblue][I]Param%C3%A8tres de l\'additiciel...[/I][/COLOR]',\
+    add_dir('[COLOR steelblue][I]Param%C3%A8tres de l\'addiciel...[/I][/COLOR]',\
             TV5CA_BASE_URL,\
             99, ADDON_IMAGES_BASEPATH+'default-folder.png', False\
     )
@@ -295,7 +295,7 @@ def jouer_video(the_url):
     check_for_internet_connection()
     link = get_cached_content(the_url)
 
-    # Obtenir media_uid pure de l'Èmission
+    # Obtenir media_uid pure de l'√©mission
     media_uid = rechercher_un_element('"mediaId":"(.+?)"', link)
 
     # Obtenir JSON avec liens RTMP du playlistService
@@ -305,11 +305,11 @@ def jouer_video(the_url):
         )\
     )
 
-    # Preparer list de videos ‡ jouer
+    # Preparer list de videos √† jouer
     playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
     playlist.clear()
 
-    # Analyser chaque stream disponible pour trouver la meilleure qualitÈ
+    # Analyser chaque stream disponible pour trouver la meilleure qualit√©
     for play_list_item in video_json['playlistItems']:
         highest_bit_rate = 0
         stream_url = None
@@ -319,7 +319,7 @@ def jouer_video(the_url):
                 stream_url = stream['url']
 
         if stream_url:
-            # GÈnÈrer un lien compatible pour librtmp
+            # G√©n√©rer un lien compatible pour librtmp
             # rtmp_url - play_path - swf_url
             url_final = '%s playPath=%s swfUrl=%s swfVfy=true' % (\
                 stream_url[:stream_url.find('mp4')],\
